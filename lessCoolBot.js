@@ -3,7 +3,7 @@ const fs = require("fs")
 const Twit = require("twit")
 
 funFact()
-setInterval(funFact, 1000*60*60*12)
+setInterval(funFact, 1000*60*60)
 function funFact(){
     https.get('https://uselessfacts.jsph.pl/random.json?language=en', (resp) => {
     let data = '';
