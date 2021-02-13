@@ -1,9 +1,11 @@
 const https = require("https")
 const fs = require("fs")
 const Twit = require("twit")
+const bw = require("bad-words")
+var filter = new bw;
 
 funFact()
-setInterval(funFact, 1000*60*5)
+setInterval(funFact, 1000*60*15)
 function funFact(){
     https.get('https://uselessfacts.jsph.pl/random.json?language=en', (resp) => {
     let data = '';
@@ -15,7 +17,8 @@ function funFact(){
 
     // The whole response has been received. Print out the result.
     resp.on('end', () => {
-        let json = JSON.parse(data).text;
+        let json = filter.clean(JSON.parse(data).text);
+        
         console.log(JSON.parse(data).text);
 
 
