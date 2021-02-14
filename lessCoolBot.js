@@ -2,10 +2,11 @@ const https = require("https")
 const fs = require("fs")
 const Twit = require("twit")
 const bw = require("bad-words")
+const config = require("./config")
 var filter = new bw;
 
 funFact()
-setInterval(funFact, 1000*60*15)
+setInterval(funFact, 1000*60*5)
 function funFact(){
     https.get('https://uselessfacts.jsph.pl/random.json?language=en', (resp) => {
     let data = '';
@@ -36,12 +37,7 @@ function funFact(){
 
     console.log("bot running!")
 
-    var T = new Twit({
-        consumer_key:         'CNVWCpptNn3ysseDYmTJLNPC1',
-        consumer_secret:      'VacNgSEWS9olTpqSPFPeau9XyRl3Kti3gmNWyTkyk9gcDKOXhY',
-        access_token:         '1359219804276727814-oX8GBXhZp8YfR0TDA1CZRgS53RmC8X',
-        access_token_secret:  'rtHTupX3ikC1qt7zpVJccXSSGrXI6lQhNejWUPpYMh3tj'
-    });
+    var T = new Twit(config);
 
 
 
