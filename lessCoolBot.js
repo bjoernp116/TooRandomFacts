@@ -6,7 +6,7 @@ const config = require("./config")
 var filter = new bw;
 
 funFact()
-setInterval(funFact, 1000*60*5)
+setInterval(funFact, 1000*60*60*12)
 function funFact(){
     https.get('https://uselessfacts.jsph.pl/random.json?language=en', (resp) => {
     let data = '';
